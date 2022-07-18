@@ -12,7 +12,8 @@
     import Tooltip from '@mui/material/Tooltip';
     import MenuItem from '@mui/material/MenuItem';
     import AdbIcon from '@mui/icons-material/Adb';
-
+// import { style } from '@mui/system';
+import styles from './header.css'
     const pages = ['Products', 'Pricing', 'Blog'];
     const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -36,7 +37,7 @@
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" className={styles.header}>
         <Container maxWidth="xl">
             <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

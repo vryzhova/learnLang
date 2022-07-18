@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,OAAO,EAAE,IAAI;CAEhB;;AACD,AAAA,SAAS,GAAG,GAAG,CAAC;EACZ,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,iBAAiB;CAC5B",
+    "sources": [
+        "wordList.scss"
+    ],
+    "names": [],
+    "file": "wordList.css"
+}

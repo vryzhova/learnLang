@@ -3,8 +3,8 @@
 #style
 header.scss
 header.css.map
-index.scss
-index.css.map
+main.scss
+main.css.map
 card.scss
 card.css.map
 # dependencies
