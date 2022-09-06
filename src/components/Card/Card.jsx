@@ -8,25 +8,35 @@ const Card = (props) => {
     const [clicked, setClicked] = useState(false)
     const handleTranslate = () => {
         setClicked(!clicked);
+        
     }
     return (
         <div className={style.card}>
-            <IconButton onClick={props.backBtn}>
+        <IconButton onClick={props.backBtn}>
                 <ArrowBackIosIcon/>
             </IconButton>
+        <div className={style.card__content}>
+            
             <div className={style.cardContent}>
                 <div className={style.mainword}>{props.word}</div>
                 <div className={style.transcription}>{props.transcription}</div>
-                <div>
+                <div className={style.translate}>
                 {
-                    (!clicked) ? <Button variant="contained" onClick={handleTranslate} >Перевод</Button> : <div onClick={handleTranslate} >{props.translate}</div>
+                    (!clicked) ? <Button 
+                    variant="contained" 
+                    onClick={handleTranslate}
+                    sx={{bgcolor:'#d81b60'}}
+                    >Перевод</Button> : <div onClick={handleTranslate} >{props.translate}</div>
                 }
                 </div>
             </div>
-            <IconButton onClick={props.nextBtn}>
+            
+        </div>
+        <IconButton onClick={props.nextBtn}>
                 <ArrowForwardIosIcon />
             </IconButton>
         </div>
+        
     )
 }
 

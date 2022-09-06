@@ -1,28 +1,100 @@
-import style from './wordList.css'
-import IconButton from '@mui/material/IconButton';
+// import style from './wordList.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-const WordList = (props) => {
-    
+import CheckIcon from '@mui/icons-material/Check';
+import { useState, useEffect } from 'react';
+import style from './wordList.css'
+import * as React from 'react';
+import {IconButton,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,Paper} from '@mui/material';
 
-    return(
-        <div className={style.wordlist}>
-            <div className={style.id}> {props.id}</div>
-            <div className={style.wordTheme}>{props.tags}</div>
-            <div className={style.english}>{props.english}</div>
-            <div className={style.russian}>{props.russian}</div>
-            <div className={style.edit}>
-                
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton> 
-                    <IconButton aria-label="delete">
+
+
+function BasicTable() {
+    const [words, setWords] = useState([]);
+    const [edit,setEdit] = useState(false)
+    useEffect(() => {
+        fetch("http://itgirlschool.justmakeit.ru/api/words").then(res => res.json()).then(data => {
+        setWords(data);
+        })
+    })
+    const removeItem = (wordId) => {
+        setWords(words.filter(word => word.id !== wordId))
+    }
+    const editItem = (wordId) => {
+        setEdit(prevState => !prevState)
+    }
+    const saveItem = (wordId) => {
+        console.log(words.find(word => word.id === wordId))
+        
+        setEdit(false)
+    }
+    return (
+        <div className={style.tableContainer}>
+        <TableContainer component={Paper} sx={{maxWidth: 800, height:600}}>
+        <Table  stickyHeader aria-label="sticky table" sx={{ minWidth: 150 }} size="small" >
+        <TableHead>
+            <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell align="right">Word Theme</TableCell>
+            <TableCell align="right">English&nbsp;</TableCell>
+            <TableCell align="right">Russian&nbsp;</TableCell>
+            <TableCell align="right">Edit&nbsp;</TableCell>
+            </TableRow>
+        </TableHead>
+        <TableBody>
+            {words.map((word) => (
+            <TableRow 
+                key={word.id}>
+                <TableCell component="th" scope="row">
+                {word.id}
+                </TableCell>
+                <TableCell align="right">{edit? <input type='text' defaultValue={word.tags} onChange={(e)=>{
+                    console.log(e.target.value)
+                }}></input>:word.tags}</TableCell>
+                <TableCell align="right">{edit? <input type='text' defaultValue={word.english}></input>:word.english}</TableCell>
+                <TableCell align="right">{edit?<input type='text' defaultValue={word.russian}></input>:word.russian}</TableCell>
+                <TableCell align="right">
+                <IconButton aria-label="delete" onClick={()=>removeItem(word.id)}>
+                    <DeleteIcon /> 
+                </IconButton> 
+                    <IconButton aria-label="edit" onClick={()=>editItem(word.id)}>
                         <EditIcon />
                     </IconButton> 
+                    {
+                    edit? <IconButton onClick={()=>saveItem(word.id)}><CheckIcon/></IconButton>:<IconButton disabled={true}><CheckIcon/></IconButton>}
+                </TableCell>
                 
-            </div>
+            </TableRow>
+            ))}
+            </TableBody>
+        </Table>
+        </TableContainer>
         </div>
-    )
+    
+    );
 }
 
-export default WordList
+// const WordList = (props) => {
+    
+
+//     return(
+//         <div className={style.wordlist}>
+//             <div className={style.id}> {props.id}</div>
+//             <div className={style.wordTheme}>{props.tags}</div>
+//             <div className={style.english}>{props.english}</div>
+//             <div className={style.russian}>{props.russian}</div>
+//             <div className={style.edit}>
+                
+//                     <IconButton aria-label="delete">
+//                         <DeleteIcon />
+//                     </IconButton> 
+//                     <IconButton aria-label="delete">
+//                         <EditIcon />
+//                     </IconButton> 
+                
+//             </div>
+//         </div>
+//     )
+// }
+
+export default BasicTable
