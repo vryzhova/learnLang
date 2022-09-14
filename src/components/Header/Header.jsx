@@ -3,8 +3,8 @@ import {AppBar,Box,Toolbar,Typography,IconButton,Container,Button,Menu,Tooltip,M
 import Avatar from '@mui/material/Avatar';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
-import {Link} from 'react-router-dom';
-
+import {NavLink} from 'react-router-dom';
+import style from './header.css'
 const pages = [{name:"Обучение",link:'/game'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -28,8 +28,8 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" sx={{backgroundColor:"#c2185b"}}>
+    <AppBar sx={{backgroundColor:'#880e4f'}} position="static">
+      <Container maxWidth="xl">
         <Toolbar disableGutters >
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -80,8 +80,8 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography sx={{color:"#ffffff"}} textAlign="center"><Link to={page.link}>{page.name}</Link></Typography>
+                <MenuItem sx={{color:"#ffffff"}} key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography  textAlign="center"><NavLink className={style.link} to={page.link}>{page.name}</NavLink></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -112,7 +112,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link to={page.link}>{page.name}</Link>
+                <NavLink to={page.link}>{page.name}</NavLink>
               </Button>
             ))}
           </Box>

@@ -16,7 +16,7 @@ function BasicTable() {
         fetch("http://itgirlschool.justmakeit.ru/api/words").then(res => res.json()).then(data => {
         setWords(data);
         })
-    })
+    },[])
     const removeItem = (wordId) => {
         setWords(words.filter(word => word.id !== wordId))
     }

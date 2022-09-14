@@ -9,3 +9,13 @@
   display:  flex;
   justify-content: space-around;
 }
+
+.progress {
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.progress>span {
+font-weight: 600;
+}

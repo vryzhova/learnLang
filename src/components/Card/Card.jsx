@@ -3,18 +3,15 @@ import Button from '@mui/material/Button';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useState } from 'react';
+import {useState } from 'react';
 const Card = (props) => {
-    const [clicked, setClicked] = useState(false)
-    const handleTranslate = () => {
-        setClicked(!clicked);
-        
-    }
+    
+
     return (
         <div className={style.card}>
         <IconButton onClick={props.backBtn}>
                 <ArrowBackIosIcon/>
-            </IconButton>
+        </IconButton>
         <div className={style.card__content}>
             
             <div className={style.cardContent}>
@@ -22,11 +19,12 @@ const Card = (props) => {
                 <div className={style.transcription}>{props.transcription}</div>
                 <div className={style.translate}>
                 {
-                    (!clicked) ? <Button 
+                    (!props.clicked) ? <Button 
                     variant="contained" 
-                    onClick={handleTranslate}
+                    onClick={props.handleTranslate}
+                    
                     sx={{bgcolor:'#d81b60'}}
-                    >Перевод</Button> : <div onClick={handleTranslate} >{props.translate}</div>
+                    >Перевод</Button> : <div>{props.translate}</div>
                 }
                 </div>
             </div>
@@ -41,3 +39,5 @@ const Card = (props) => {
 }
 
 export default Card
+
+// props.handleProgress
