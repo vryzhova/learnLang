@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavLink} from 'react-router-dom';
-import style from './header.css'
+import style from './header.scss'
 const pages = [{name:"Обучение",link:'/game'}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 

@@ -1,12 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-#style
-header.scss
-header.css.map
-main.scss
-main.css.map
-card.scss
-card.css.map
 # dependencies
 /node_modules
 /.pnp

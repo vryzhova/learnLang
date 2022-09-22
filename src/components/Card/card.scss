@@ -1,0 +1,21 @@
+.card__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 300px;
+    width: 200px;
+    background-color: white;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.translate, .transcription {
+    margin-top: 10px;
+}

@@ -1,9 +1,9 @@
-import style from './card.css';
+import style from './card.scss';
 import Button from '@mui/material/Button';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import {useState } from 'react';
+
 const Card = (props) => {
     
 
